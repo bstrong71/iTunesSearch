@@ -1,7 +1,4 @@
 
-// 1. First select and store the elements you'll be working with
-
-let musicPlayer = document.getElementById('musicPlayer');
 let button = document.getElementById('button');
 let resultsSection = document.getElementById('resultsSection');
 
@@ -10,7 +7,8 @@ let resultsSection = document.getElementById('resultsSection');
 //********* Search Button Event *********************************//
 button.addEventListener("click", function(){
   let search = document.getElementById('search');
-  let song = musicPlayer.src;
+  let musicPlayer = document.getElementById('musicPlayer');
+
   // console.log(musicPlayer.src);
 //This adds the required "+" to the string for iTunes//
   let str = search.value.split(' ').join('+');
@@ -47,12 +45,16 @@ button.addEventListener("click", function(){
           // ******** adding clickability to each song image ********//
             songImage.value = i;
             songImage.addEventListener('click', function(event){
-              console.log('event', event);
-              console.log('event.target', event.target);
-              console.log('event.target.value', event.target.value);
+
         // ******** call playSong function with specific song value ******** //
               playSong(event.target.value);
             })
+            // ******** Function to play the selected song ******** //
+            function playSong(index){
+              let songToPlay = data.results[index].previewUrl;
+              musicPlayer.src = songToPlay;
+              musicPlayer.load();
+            }
           }
 
         });
@@ -61,18 +63,5 @@ button.addEventListener("click", function(){
     .catch(function(err) {
       console.log("Fetch Error :-S", err);
     });
+
 })
-// ******** Function to play the selected song ******** //
-function playSong(index){
-  
-
-}
-
-// 3. Create your `fetch` request that is called after a submission
-
-
-// 4. Create a way to append the fetch results to your page
-
-
-
-// 5. Create a way to listen for a click that will play the song in the audio play

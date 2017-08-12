@@ -10,15 +10,19 @@
     <header>
       <h1>Strong Sounds</h1>
     </header>
-    <section class="player">
-      <audio class="music-player" controls="controls" src=""></audio>
+    <section id="playerSection">
+      <audio id="musicPlayer" controls="controls" src=""></audio>
     </section>
-    <section class="search">
-      <form class="search-form">
-
+    <section class="searchSection">
+      <form id="search-form">
+        <input id="search" type="text" name="bandInput" value="">
+        <button id="button" type="button" name="button">Search</button>
       </form>
     </section>
-    <section class="results"></section>
+    <section id="resultsSection">
+      <h4>Search Results:</h4>
+
+    </section>
   </div>
   <script src="main.js"></script>
 </body>

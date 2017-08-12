@@ -33,36 +33,26 @@ button.addEventListener("click", function(){
           //******* creating each song search result ********//
             let songResult = document.createElement('div');
             songResult.setAttribute("class", "each_container");
-            // let songImage = document.createElement('img');  
+            let songImage = document.createElement('img');
+            songImage.setAttribute("src", data.results[i].artworkUrl100);
             songResult.innerHTML =
             `
-              <img src=${data.results[i].artworkUrl100}>
               <p>${data.results[i].trackName}</p>
               <p>${data.results[i].artistName}</p>
             `
           // ******** adding the content to the parent ********//
+            songResult.appendChild(songImage);
             resultsSection.appendChild(songResult);
 
-          // ******** adding clickability to each result ********//
-            songResult.value = i;
-            songResult.addEventListener('click', function(event){
+          // ******** adding clickability to each song image ********//
+            songImage.value = i;
+            songImage.addEventListener('click', function(event){
               console.log('event', event);
               console.log('event.target', event.target);
               console.log('event.target.value', event.target.value);
-
+        // ******** call playSong function with specific song value ******** //
+              playSong(event.target.value);
             })
-            //sample copied from wk4 project//
-            // let info = document.createElement('button');
-            // info.setAttribute('class', 'event_buttons');
-            // info.textContent = 'View event info';
-            // info.value = i;
-            // info.addEventListener('click', function(event){
-            //   console.log('event', event);
-            //   console.log('event.target', event.target);
-            //   console.log('event.target.value', event.target.value);
-            //   loadEventView(event.target.value);
-            // })
-            // buttonContainer.appendChild(info);
           }
 
         });
@@ -72,7 +62,11 @@ button.addEventListener("click", function(){
       console.log("Fetch Error :-S", err);
     });
 })
+// ******** Function to play the selected song ******** //
+function playSong(index){
+  
 
+}
 
 // 3. Create your `fetch` request that is called after a submission
 

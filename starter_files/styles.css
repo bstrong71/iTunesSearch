@@ -71,14 +71,12 @@ h4{
 
 .each_container{
   background-color: gray;
-  cursor: pointer;
   flex-basis: 15%;
   font-size: 12px;
   margin: 10px;
   text-align: center;
 }
 
-.song_details{
-  padding: 15px;
-
+img{
+  cursor: pointer;
 }

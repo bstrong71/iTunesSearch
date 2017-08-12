@@ -11,10 +11,9 @@ let resultsSection = document.getElementById('resultsSection');
 button.addEventListener("click", function(){
   let search = document.getElementById('search');
   let song = musicPlayer.src;
-  console.log(musicPlayer.src);
+  // console.log(musicPlayer.src);
 //This adds the required "+" to the string for iTunes//
   let str = search.value.split(' ').join('+');
-  console.log(str);
 //Makes entry equal to the API string and limits results to 25//
   let entry = "https://itunes.apple.com/search?term=" + str + "&limit=20";
 // Clears out results section in case of previous searches//
@@ -29,23 +28,41 @@ button.addEventListener("click", function(){
         }
         response.json().then(function(data) {
           console.log("Here is the data: ", data);
-          console.log(data.results.length);
+
           for (var i = 0; i < data.results.length; i++) {
-
-            let songResult = document.createElement('article');
+          //******* creating each song search result ********//
+            let songResult = document.createElement('div');
             songResult.setAttribute("class", "each_container");
-
-            let songDetails = document.createElement('div');
-            songDetails.setAttribute('class', 'song_details');
-            songDetails.innerHTML =
+            // let songImage = document.createElement('img');  
+            songResult.innerHTML =
             `
               <img src=${data.results[i].artworkUrl100}>
               <p>${data.results[i].trackName}</p>
               <p>${data.results[i].artistName}</p>
             `
-
-            songResult.appendChild(songDetails);
+          // ******** adding the content to the parent ********//
             resultsSection.appendChild(songResult);
+
+          // ******** adding clickability to each result ********//
+            songResult.value = i;
+            songResult.addEventListener('click', function(event){
+              console.log('event', event);
+              console.log('event.target', event.target);
+              console.log('event.target.value', event.target.value);
+
+            })
+            //sample copied from wk4 project//
+            // let info = document.createElement('button');
+            // info.setAttribute('class', 'event_buttons');
+            // info.textContent = 'View event info';
+            // info.value = i;
+            // info.addEventListener('click', function(event){
+            //   console.log('event', event);
+            //   console.log('event.target', event.target);
+            //   console.log('event.target.value', event.target.value);
+            //   loadEventView(event.target.value);
+            // })
+            // buttonContainer.appendChild(info);
           }
 
         });

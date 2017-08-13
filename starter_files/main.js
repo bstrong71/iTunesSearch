@@ -3,7 +3,6 @@ let button = document.getElementById('button');
 let resultsSection = document.getElementById('resultsSection');
 
 
-
 //********* Search Button Event *********************************//
 button.addEventListener("click", function(){
   let search = document.getElementById('search');
@@ -13,7 +12,7 @@ button.addEventListener("click", function(){
 //This adds the required "+" to the string for iTunes//
   let str = search.value.split(' ').join('+');
 //Makes entry equal to the API string and limits results to 25//
-  let entry = "https://itunes.apple.com/search?term=" + str + "&limit=20";
+  let entry = "https://itunes.apple.com/search?term=" + str + "&media=music&limit=24";
 // Clears out results section in case of previous searches//
   resultsSection.innerHTML = "";
 //Boilerplate fetch from API//

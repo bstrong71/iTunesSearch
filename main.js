@@ -8,7 +8,6 @@ button.addEventListener("click", function(){
   let search = document.getElementById('search');
   let musicPlayer = document.getElementById('musicPlayer');
 
-  // console.log(musicPlayer.src);
 //This adds the required "+" to the string for iTunes//
   let str = search.value.split(' ').join('+');
 //Makes entry equal to the API string and limits results to 25//
